@@ -1,0 +1,41 @@
+{
+  "name": "kaikei_accounting",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p $PORT",
+    "restart": "yarn && next dev"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.17.0",
+    "@aws-sdk/client-s3": "^3.17.0",
+    "@date-io/date-fns": "1.x",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/data-grid": "^4.0.0-alpha.28",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "@material-ui/pickers": "^3.3.10",
+    "@sendgrid/mail": "^7.4.4",
+    "aws-sdk": "^2.916.0",
+    "axios": "^0.21.1",
+    "date-fns": "^2.22.1",
+    "formik": "^2.2.8",
+    "lodash": "^4.17.21",
+    "material-ui-dropzone": "^3.5.0",
+    "moment": "^2.29.1",
+    "next": "10.2.0",
+    "next-auth": "^3.23.0",
+    "notistack": "^1.0.9",
+    "react": "17.0.2",
+    "react-datepicker": "^4.0.0",
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.6.1",
+    "react-number-format": "^4.6.0",
+    "swr": "^0.5.6",
+    "twilio": "^3.63.1",
+    "uuid": "^8.3.2",
+    "yup": "^0.32.9"
+  }
+}

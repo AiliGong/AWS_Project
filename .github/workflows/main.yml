@@ -1,0 +1,42 @@
+name: Deploy
+on:
+  push:
+    branches:
+    - deploy
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout source code
+      uses: actions/checkout@v1
+      
+    - name: Generate build number
+      id: buildnumber
+      uses: einaregilsson/build-number@v3 
+      with:
+        token: ${{secrets.github_token}}  
+      
+    - name: Node Version 14
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    
+    - run: npm install
+    - run: npm run build --if-present
+    
+    - name: Generate deployment package
+      run: zip -r --symlinks deploy.zip . -x node_modules/\* *.git*
+      
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v16
+      with:
+        aws_access_key: AKIAWKQW5KJPLNFRELRV
+        aws_secret_key: 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
+        application_name: next-accounting-system
+        environment_name: Nextaccountingsystem-env
+        version_label: ${{ steps.buildnumber.outputs.build_number }}
+        use_existing_version_if_available: false
+        region: us-east-1
+        deployment_package: deploy.zip
